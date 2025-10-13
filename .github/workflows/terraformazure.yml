@@ -32,18 +32,18 @@ jobs:
           terraform_version: 1.9.5
 
       - name: Terraform Init
-        working-directory: ./terraform_project
+        working-directory: ./
         run: terraform init
 
       - name: Terraform Validate
-        working-directory: ./terraform_project
+        working-directory: ./
         run: terraform validate
 
       - name: Terraform Plan
-        working-directory: ./terraform_project
+        working-directory: ./
         run: terraform plan -out=tfplan
 
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main'
-        working-directory: ./terraform_project
+        working-directory: ./
         run: terraform apply -auto-approve tfplan
